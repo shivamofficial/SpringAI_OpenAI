@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class MultiModelChatController {
+    /*
 
     private final ChatClient openAiChatClient;
     private final ChatClient ollamaChatClient;
@@ -29,4 +30,6 @@ public class MultiModelChatController {
     public String ollamaChat(@RequestParam("message") String message) {
         return ollamaChatClient.prompt(message).call().content();
     }
+
+     */
 }

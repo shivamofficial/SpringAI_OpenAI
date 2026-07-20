@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apis")
 public class ChatController {
 
-    private final ChatClient chatClient;
-
-    public ChatController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
-    }
-
-    @GetMapping("/chat")
-    public String chat(@RequestParam String message) {
-        return chatClient.prompt(message)
-                .call()
-                .content();
-    }
+//    private final ChatClient chatClient;
+//
+//    public ChatController(ChatClient.Builder chatClientBuilder) {
+//        this.chatClient = chatClientBuilder.build();
+//    }
+//
+//    @GetMapping("/chat")
+//    public String chat(@RequestParam String message) {
+//        return chatClient.prompt(message)
+//                .call()
+//                .content();
+//    }
 }
 
