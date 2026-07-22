@@ -16,38 +16,38 @@ import java.util.Map;
 @RequestMapping("/api")
 public class PromptTemplateController {
 
-    private final ChatClient chatClient;
-
-    public PromptTemplateController(ChatClient.Builder builder) {
-        this.chatClient = builder.build();
-    }
-
-    @Value("classpath:promptTemplates/userPromptTemplate.st")
-    private Resource templateResource;
-
-    @GetMapping("/email")
-    public String emailResponse(
-            @RequestParam String customerName,
-            @RequestParam String customerMessage) throws IOException {
-
-        // Read template file
-        String templateText = StreamUtils.copyToString(
-                templateResource.getInputStream(),
-                StandardCharsets.UTF_8);
-
-        // Create PromptTemplate
-        PromptTemplate promptTemplate = new PromptTemplate(templateText);
-
-        // Replace placeholders
-        Prompt prompt = promptTemplate.create(Map.of(
-                "customerName", customerName,
-                "customerMessage", customerMessage
-        ));
-System.out.println("prompt is :"+ prompt);
-        // Send to LLM
-        return chatClient.prompt(prompt)
-                .call()
-                .content();
-    }
+//    private final ChatClient chatClient;
+//
+//    public PromptTemplateController(ChatClient.Builder builder) {
+//        this.chatClient = builder.build();
+//    }
+//
+//    @Value("classpath:promptTemplates/userPromptTemplate.st")
+//    private Resource templateResource;
+//
+//    @GetMapping("/email")
+//    public String emailResponse(
+//            @RequestParam String customerName,
+//            @RequestParam String customerMessage) throws IOException {
+//
+//        // Read template file
+//        String templateText = StreamUtils.copyToString(
+//                templateResource.getInputStream(),
+//                StandardCharsets.UTF_8);
+//
+//        // Create PromptTemplate
+//        PromptTemplate promptTemplate = new PromptTemplate(templateText);
+//
+//        // Replace placeholders
+//        Prompt prompt = promptTemplate.create(Map.of(
+//                "customerName", customerName,
+//                "customerMessage", customerMessage
+//        ));
+//System.out.println("prompt is :"+ prompt);
+//        // Send to LLM
+//        return chatClient.prompt(prompt)
+//                .call()
+//                .content();
+//    }
 
 }
